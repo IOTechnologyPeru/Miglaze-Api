@@ -26,7 +26,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name = $request->name;
+        $product->unit_price = $request->unit_price;
+        $product->stock = $request->stock;
+        $product->kind_product_id = $request->category;
+        $product->product_brand_id= $request->brand;
+        $product->save();
+
+        return response()->json($product, 201);
     }
 
     /**
